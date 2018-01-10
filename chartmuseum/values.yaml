@@ -4,3 +4,5 @@ chartmuseum:
     name: chartmuseum/chartmuseum
     tag: v0.2.7
     pullPolicy: IfNotPresent
+  config:
+    localStoragePath: /storage

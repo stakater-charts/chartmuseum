@@ -56,7 +56,7 @@ items:
           imagePullPolicy: {{ .Values.chartmuseum.image.pullPolicy }}
           args:
           - --port=8080
-          - --storage-local-rootdir=/storage
+          - --storage-local-rootdir={{ .Values.chartmuseum.config.localStoragePath }}
           ports:
           - containerPort: 8080
           livenessProbe:
@@ -72,7 +72,7 @@ items:
             initialDelaySeconds: 5
             periodSeconds: 10
           volumeMounts:
-          - mountPath: /storage
+          - mountPath: {{ .Values.chartmuseum.config.localStoragePath }}
             name: chart-storage
           resources:
             limits:
