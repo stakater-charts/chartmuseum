@@ -1,5 +1,8 @@
-namespace: tools
+kubernetes:
+  host: https://kubernetes.default:443
+
 chartmuseum:
+  namespace: tools
   image:
     name: chartmuseum/chartmuseum
     tag: v0.2.7
