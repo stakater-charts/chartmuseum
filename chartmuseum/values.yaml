@@ -9,3 +9,10 @@ chartmuseum:
     pullPolicy: IfNotPresent
   config:
     localStoragePath: /storage
+    allowOverwrite: "true"
+    auth:
+      enabled: true
+      username: "stakater"
+      password: "somepassword"
+      allowAnonymousGet: "true"
+      
