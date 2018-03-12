@@ -30,7 +30,6 @@ toolsNode(toolsImage: 'stakater/pipeline-tools:1.2.0') {
         stage('Upload Chart') {
             String cmUsername = common.getEnvValue('CHARTMUSEUM_USERNAME')
             String cmPassword = common.getEnvValue('CHARTMUSEUM_PASSWORD')
-            sh "echo \$CHARTMUSEUM_USERNAME"
             chartManager.uploadToChartMuseum(WORKSPACE, chartMuseumChartName, chartMuseumPackageName, cmUsername, cmPassword)
             chartManager.uploadToChartMuseum(WORKSPACE, chartMuseumStorageChartName, chartMuseumStoragePackageName, cmUsername, cmPassword)
         }
