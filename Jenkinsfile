@@ -1,5 +1,5 @@
 #!/usr/bin/groovy
-@Library('github.com/stakater/fabric8-pipeline-library@basic-auth-cm')
+@Library('github.com/stakater/fabric8-pipeline-library@master')
 
 String chartMuseumPackageName = ""
 String chartMuseumStoragePackageName = ""
