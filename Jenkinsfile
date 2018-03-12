@@ -9,6 +9,7 @@ String chartMuseumStorageChartName = "chartmuseum-storage"
 toolsNode(toolsImage: 'stakater/pipeline-tools:1.2.0') {
     container(name: 'tools') {
         def helm = new io.stakater.charts.Helm()
+        def common = new io.stakater.Common()
         def chartManager = new io.stakater.charts.ChartManager()
         stage('Checkout') {
             checkout scm
@@ -27,8 +28,11 @@ toolsNode(toolsImage: 'stakater/pipeline-tools:1.2.0') {
         }
 
         stage('Upload Chart') {
-            chartManager.uploadToChartMuseum(WORKSPACE, chartMuseumChartName, chartMuseumPackageName, env.CHARTMUSEUM_USERNAME, env.CHARTMUSEUM_PASSWORD)
-            chartManager.uploadToChartMuseum(WORKSPACE, chartMuseumStorageChartName, chartMuseumStoragePackageName, env.CHARTMUSEUM_USERNAME, env.CHARTMUSEUM_PASSWORD)
+            String cmUsername = common.getEnvValue('CHARTMUSEUM_USERNAME')
+            String cmPassword = common.getEnvValue('CHARTMUSEUM_PASSWORD')
+            sh "echo \$CHARTMUSEUM_USERNAME"
+            chartManager.uploadToChartMuseum(WORKSPACE, chartMuseumChartName, chartMuseumPackageName, cmUsername, cmPassword)
+            chartManager.uploadToChartMuseum(WORKSPACE, chartMuseumStorageChartName, chartMuseumStoragePackageName, cmUsername, cmPassword)
         }
     }
 }
