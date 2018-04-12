@@ -15,21 +15,19 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
-{{- define "labels.stakater" -}}
+{{- define "labels.selector" -}}
 app: {{ template "name" . }}
 group: {{ .Values.chartmuseum.labels.group }}
-version: {{ .Values.chartmuseum.labels.version }}
 provider: {{ .Values.chartmuseum.labels.provider }}
+{{- end -}}
+
+{{- define "labels.stakater" -}}
+{{ template "labels.selector" . }}
+version: {{ .Values.chartmuseum.labels.version }}
 {{- end -}}
 
 {{- define "labels.chart" -}}
 chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 release: {{ .Release.Name | quote }}
 heritage: {{ .Release.Service | quote }}
-{{- end -}}
-
-{{- define "labels.selector" -}}
-app: {{ template "name" . }}
-group: {{ .Values.chartmuseum.labels.group }}
-provider: {{ .Values.chartmuseum.labels.provider }}
 {{- end -}}
