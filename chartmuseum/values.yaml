@@ -3,9 +3,13 @@ kubernetes:
 
 chartmuseum:
   namespace: tools
+  labels:
+    version: 0.5.1
+    group: com.stakater.platform
+    provider: stakater
   image:
     name: chartmuseum/chartmuseum
-    tag: v0.2.7
+    tag: v0.5.1
     pullPolicy: IfNotPresent
   config:
     localStoragePath: /storage

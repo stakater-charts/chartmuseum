@@ -6,39 +6,28 @@ items:
   kind: Deployment
   metadata:
     annotations:
-      configmap.fabric8.io/update-on-change: {{ template "fullname" . }}
+      configmap.fabric8.io/update-on-change: {{ template "name" . }}
       fabric8.io/target-platform: kubernetes
     labels:
-      app: {{ template "fullname" . }}
-      chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-      release: {{ .Release.Name | quote }}
-      heritage: {{ .Release.Service | quote }}
-      version: 1.0.0
-    name: {{ template "fullname" . }}
+{{ include "labels.stakater" . | indent 6 }}
+{{ include "labels.chart" . | indent 6 }}
+    name: {{ template "name" . }}
   spec:
     replicas: 1
     revisionHistoryLimit: 2
     selector:
       matchLabels:
-        app: {{ template "fullname" . }}
-        chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-        release: {{ .Release.Name | quote }}
-        heritage: {{ .Release.Service | quote }}
-        version: 1.0.0
+{{ include "labels.selector" . | indent 8 }}
     template:
       metadata:
         annotations:
-          configmap.fabric8.io/update-on-change: {{ template "fullname" . }}
+          configmap.fabric8.io/update-on-change: {{ template "name" . }}
           fabric8.io/target-platform: kubernetes
         labels:
-          app: {{ template "fullname" . }}
-          chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-          release: {{ .Release.Name | quote }}
-          heritage: {{ .Release.Service | quote }}
-          version: 1.0.0
+{{ include "labels.selector" . | indent 10 }}
       spec:
         containers:
-        - name: {{ template "fullname" . }}
+        - name: {{ template "name" . }}
           env:
           - name: PROJECT_NAMESPACE
             value: ${PROJECT_NAMESPACE}
