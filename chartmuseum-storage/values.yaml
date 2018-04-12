@@ -1,4 +1,8 @@
 chartmuseumStorage:
+  labels:
+    version: 0.5.1
+    group: com.stakater.platform
+    provider: stakater
   namespace: tools
   efs:
     server: fs-a384000a.efs.us-west-2.amazonaws.com

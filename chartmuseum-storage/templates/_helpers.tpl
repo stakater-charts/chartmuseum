@@ -14,3 +14,16 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{- $name := default .Chart.Name .Values.nameOverride -}}
 {{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
+
+{{- define "labels.stakater" -}}
+app: {{ template "name" . }}
+group: {{ .Values.chartmuseumStorage.labels.group }}
+version: {{ .Values.chartmuseumStorage.labels.version }}
+provider: {{ .Values.chartmuseumStorage.labels.provider }}
+{{- end -}}
+
+{{- define "labels.chart" -}}
+chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+release: {{ .Release.Name | quote }}
+heritage: {{ .Release.Service | quote }}
+{{- end -}}
