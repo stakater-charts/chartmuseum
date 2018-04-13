@@ -1,9 +1,9 @@
 #!/usr/bin/groovy
-@Library('github.com/stakater/fabric8-pipeline-library@chart-func')
+@Library('github.com/stakater/fabric8-pipeline-library@master')
 
 def dummy = ""
 
-toolsNode(toolsImage: 'stakater/pipeline-tools:1.2.0') {
+toolsNode(toolsImage: 'stakater/pipeline-tools:1.5.1') {
     container(name: 'tools') {
         stage('Checkout') {
             checkout scm
