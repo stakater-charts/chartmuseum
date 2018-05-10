@@ -3,18 +3,6 @@
 
 def dummy = ""
 
-toolsNode(toolsImage: 'stakater/pipeline-tools:1.5.1') {
-    container(name: 'tools') {
-        stage('Checkout') {
-            checkout scm
-        }
-
-        prepareAndUploadChart {
-            chartName = "chartmuseum"
-        }
-
-        prepareAndUploadChart {
-            chartName = "chartmuseum-storage"
-        }
-    }
+prepareAndUploadCharts {
+    charts = [ "chartmuseum", "chartmuseum-storage" ]
 }
