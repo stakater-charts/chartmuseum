@@ -40,14 +40,14 @@ items:
           - name: STORAGE
             value: local
           - name: ALLOW_OVERWRITE
-            value: {{ .Values.chartmuseum.config.allowOverwrite }}
+            value: "{{ .Values.chartmuseum.config.allowOverwrite }}"
           {{- if .Values.chartmuseum.config.auth.enabled }}
           - name: BASIC_AUTH_USER
             value: {{ .Values.chartmuseum.config.auth.username | quote }}
           - name: BASIC_AUTH_PASS
             value: {{ .Values.chartmuseum.config.auth.password | quote }}
           - name: AUTH_ANONYMOUS_GET
-            value: {{ .Values.chartmuseum.config.auth.allowAnonymousGet | quote }}
+            value: "{{ .Values.chartmuseum.config.auth.allowAnonymousGet }}"
           {{- end }}
           image: "{{ .Values.chartmuseum.image.name }}:{{ .Values.chartmuseum.image.tag }}"
           imagePullPolicy: {{ .Values.chartmuseum.image.pullPolicy }}
