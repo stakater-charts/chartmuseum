@@ -43,9 +43,9 @@ items:
             value: "{{ .Values.chartmuseum.config.allowOverwrite }}"
           {{- if .Values.chartmuseum.config.auth.enabled }}
           - name: BASIC_AUTH_USER
-            value: {{ .Values.chartmuseum.config.auth.username | quote }}
+            value: "{{ .Values.chartmuseum.config.auth.username }}"
           - name: BASIC_AUTH_PASS
-            value: {{ .Values.chartmuseum.config.auth.password | quote }}
+            value: "{{ .Values.chartmuseum.config.auth.password }}"
           - name: AUTH_ANONYMOUS_GET
             value: "{{ .Values.chartmuseum.config.auth.allowAnonymousGet }}"
           {{- end }}
@@ -77,7 +77,7 @@ items:
               memory: 128Mi
             requests:
               cpu: 80m
-              memory: 64Mi  
+              memory: 64Mi
         volumes:
         - name: chart-storage
           persistentVolumeClaim:
