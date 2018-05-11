@@ -23,7 +23,7 @@ provider: {{ .Values.chartmuseum.labels.provider }}
 
 {{- define "labels.stakater" -}}
 {{ template "labels.selector" . }}
-version: {{ .Values.chartmuseum.labels.version }}
+version: "{{ .Values.chartmuseum.labels.version }}"
 {{- end -}}
 
 {{- define "labels.chart" -}}

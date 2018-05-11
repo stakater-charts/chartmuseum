@@ -18,7 +18,7 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{- define "labels.stakater" -}}
 app: {{ template "name" . }}
 group: {{ .Values.chartmuseumStorage.labels.group }}
-version: {{ .Values.chartmuseumStorage.labels.version }}
+version: "{{ .Values.chartmuseumStorage.labels.version }}"
 provider: {{ .Values.chartmuseumStorage.labels.provider }}
 {{- end -}}
 
