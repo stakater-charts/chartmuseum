@@ -3,6 +3,8 @@ kubernetes:
 
 chartmuseum:
   namespace: tools
+  service:
+    ingressClass: internal-ingress
   labels:
     version: 0.5.1
     group: com.stakater.platform
