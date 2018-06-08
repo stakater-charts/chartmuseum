@@ -8,6 +8,18 @@ items:
     annotations:
       configmap.fabric8.io/update-on-change: {{ template "name" . }}
       fabric8.io/target-platform: kubernetes
+      {{- with .Values.chartmuseum.config.fluentd }}
+      fluentd_configuration: >
+      [
+        [
+          {
+            "expression": "{{ .regex }}",
+            "time_format": "{{ .timeFormat }}",
+            "container_name": '{{ template "name" $ }}'
+          }
+        ]
+      ]
+      {{- end }}
     labels:
 {{ include "labels.stakater" . | indent 6 }}
 {{ include "labels.chart" . | indent 6 }}
