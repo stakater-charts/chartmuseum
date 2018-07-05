@@ -10,6 +10,12 @@ items:
         ingress.kubernetes.io/force-ssl-redirect: true
         ingress.kubernetes.io/proxy-body-size: 900m
         kubernetes.io/ingress.class: {{ .Values.chartmuseum.service.ingressClass }}
+      {{- with .Values.chartmuseum.forecastle.expose }}
+        forecastle.stakater.com/expose: {{ . }}
+      {{- end }}
+      {{- with .Values.chartmuseum.forecastle.icon }}
+        forecastle.stakater.com/icon: {{ . }}
+      {{- end }}
     labels:
       expose: "true"
 {{ include "labels.stakater" . | indent 6 }}
