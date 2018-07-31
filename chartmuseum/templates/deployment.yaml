@@ -6,7 +6,6 @@ items:
   kind: Deployment
   metadata:
     annotations:
-      configmap.fabric8.io/update-on-change: {{ template "name" . }}
       fabric8.io/target-platform: kubernetes
     labels:
 {{ include "labels.stakater" . | indent 6 }}
@@ -21,7 +20,6 @@ items:
     template:
       metadata:
         annotations:
-          configmap.fabric8.io/update-on-change: {{ template "name" . }}
           fabric8.io/target-platform: kubernetes
           {{- with .Values.chartmuseum.config.fluentd }}
           fluentd_configuration: >
