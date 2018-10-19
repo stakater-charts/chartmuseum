@@ -3,11 +3,20 @@ kubernetes:
 
 chartmuseum:
   namespace: tools
-  forecastle: {}
-    # icon: https://cdn-images-1.medium.com/max/521/0*D__TQ7qMdoq3Y7kP.png
-    # expose: "true"
   service:
-    ingressClass: internal-ingress
+    annotations:
+      config.xposer.stakater.com/Domain: stackator.com
+      config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}-{{.Namespace}}'
+      config.xposer.stakater.com/IngressURLTemplate: '{{.Service}}.{{.Namespace}}.{{.Domain}}'
+      config.xposer.stakater.com/TLS: "true"
+      xposer.stakater.com/annotations: |-
+        kubernetes.io/ingress.class: internal-ingress
+        ingress.kubernetes.io/force-ssl-redirect: true
+        ingress.kubernetes.io/proxy-body-size: 900m
+        certmanager.k8s.io/cluster-issuer: letsencrypt-production
+# Add these annotations under xposer.stakater.com/annotations
+# forecastle.stakater.com/expose: true
+# forecastle.stakater.com/icon: https://cdn-images-1.medium.com/max/521/0*D__TQ7qMdoq3Y7kP.png
   labels:
     version: 0.5.1
     group: com.stakater.platform
