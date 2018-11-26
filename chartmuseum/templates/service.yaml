@@ -11,9 +11,9 @@ items:
 {{- end }}
     labels:
       expose: "true"
-{{ include "labels.stakater" . | indent 6 }}
-{{ include "labels.chart" . | indent 6 }}
-    name: {{ template "name" . }}
+{{ include "chartmuseum.labels.stakater" . | indent 6 }}
+{{ include "chartmuseum.labels.chart" . | indent 6 }}
+    name: {{ template "chartmuseum.name" . }}
   spec:
     ports:
     - name: http
@@ -21,4 +21,4 @@ items:
       protocol: TCP
       targetPort: 8080
     selector:
-{{ include "labels.selector" . | indent 6 }}
+{{ include "chartmuseum.labels.selector" . | indent 6 }}

@@ -6,8 +6,8 @@ items:
   kind: PersistentVolumeClaim
   metadata:
     labels:
-{{ include "labels.stakater" . | indent 6 }}
-{{ include "labels.chart" . | indent 6 }}
+{{ include "chartmuseum-storage.labels.stakater" . | indent 6 }}
+{{ include "chartmuseum-storage.labels.chart" . | indent 6 }}
     name: chart-storage
   spec:
     accessModes:
