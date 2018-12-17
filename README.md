@@ -18,3 +18,4 @@ After that, install `chartmuseum` chart
 ```bash
 helm install --name chartmuseum chartmuseum/chartmuseum
 ```
+test
