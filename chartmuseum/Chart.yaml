@@ -1,13 +1,18 @@
 apiVersion: v1
+description: Helm Chart Repository with support for Amazon S3 and Google Cloud Storage
 name: chartmuseum
-description: ChartMuseum chart that runs on kubernetes
-version: 1.0.12
+version: 1.8.0
+appVersion: 0.8.0
+home: https://github.com/chartmuseum/chartmuseum
+icon: https://raw.githubusercontent.com/chartmuseum/chartmuseum/master/logo.png
 keywords:
-  - chartmuseum
-  - pvc
-  - pv
-  - kubernetes
-home: https://github.com/stakater-charts/chartmuseum
+- chartmuseum
+- helm
+- charts repo
 maintainers:
-- name: Stakater
-  email: stakater@aurorasolutions.io
+- name: codefresh-io
+  email: opensource@codefresh.io
+- name: cloudposse
+  email: hello@cloudposse.com
+- name: chartmuseum
+  email: chartmuseum@gmail.com
