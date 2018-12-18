@@ -4,6 +4,6 @@
 def dummy = ""
 
 prepareAndUploadCharts {
-    charts = [ "chartmuseum", "chartmuseum-storage" ]
+    charts = [ "chartmuseum" ]
     isPublic = true
 }
