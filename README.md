@@ -12,7 +12,7 @@ Install `chartmuseum` chart
 helm install --name chartmuseum chartmuseum/chartmuseum
 ```
 
-It can also be installed from public helm charts repo.
+It can also be installed from public helm charts repository.
 
 ```bash
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
