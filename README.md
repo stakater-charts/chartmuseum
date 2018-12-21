@@ -12,6 +12,16 @@ Install `chartmuseum` chart
 helm install --name chartmuseum chartmuseum/chartmuseum
 ```
 
+It can also be installed from stakater helm charts repo.
+
+```bash
+helm repo add stakater https://stakater.github.io/stakater-charts/
+
+helm repo update
+
+helm install stakater/chartmuseum
+```
+
 It can also be installed from public helm charts repo.
 
 ```bash
